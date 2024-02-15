@@ -52,14 +52,14 @@ const Registration = () => {
 
                 <Input type="text" variant="bordered" label="city" placeholder="Enter your city" className="mt-4" />
 
-                <div className="mt-4">
+                <div className="mt-5">
                     <label className="block text-gray-700  font-bold mb-2">
                         Upload File
                     </label>
                     <input type="file" className="block w-full text-gray-500 border-2 border-gray rounded-xl py-3 px-3 focus:outline-none focus:border-black-700" />
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-5">
                     <label className="block text-gray-700 font-bold mb-2">
                         Create your description
                     </label>
