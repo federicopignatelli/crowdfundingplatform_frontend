@@ -49,20 +49,20 @@ const Supernavbar = () => {
                 </NavbarItem>
             </NavbarContent>
 
-            {/* <NavbarContent justify="end">
+            <NavbarContent justify="end">
                 <NavbarItem className="lg:flex">
                     <Link color="foreground" href="#">
                         Login
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Button as={Link} color="warning" href="#" variant="flat">
+                    <Button as={Link} color="warning" href="#" variant="flat" radius="sm">
                         Sign Up
                     </Button>
                 </NavbarItem>
-            </NavbarContent> */}
+            </NavbarContent>
 
-            <NavbarContent as="div" justify="end" className="">
+            {/* <NavbarContent as="div" justify="end" className="">
                 <Dropdown placement="bottom-end">
                     <DropdownTrigger>
                         <Avatar
@@ -88,7 +88,7 @@ const Supernavbar = () => {
                         </DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
-            </NavbarContent>
+            </NavbarContent> */}
 
             <NavbarMenu>
                 <NavbarMenuItem>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Textarea } from "@nextui-org/react";
+import { Input, Textarea, Button } from "@nextui-org/react";
 import { EyeSlashFilledIcon } from "../eyeicon/EyeSlashFilledIcon";
 import { EyeFilledIcon } from "../eyeicon/EyeFilledIcon";
 
@@ -48,10 +48,11 @@ const Registration = () => {
                     className="mt-4"
                 />
 
-                <Input type="text" variant="bordered" label="Country" placeholder="Enter your country" className="mt-4" />
+                <div class="flex flex-row space-x-4">
+                    <Input type="text" variant="bordered" label="Country" placeholder="Enter your country" className="mt-4" />
 
-                <Input type="text" variant="bordered" label="city" placeholder="Enter your city" className="mt-4" />
-
+                    <Input type="text" variant="bordered" label="city" placeholder="Enter your city" className="mt-4" />
+                </div>
                 <div className="mt-5">
                     <label className="block text-gray-700  font-bold mb-2">
                         Upload File
@@ -70,6 +71,14 @@ const Registration = () => {
                         variant="bordered"
                     />
                 </div>
+                <div class="flex flex-col mb-5 mt-4 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <Button color="warning" variant="solid" className="sm:w-1/2 font-semibold text-base">
+                        Registration
+                    </Button>
+                    <Button color="default" variant="flat" className="sm:w-1/2">
+                        Login
+                    </Button>
+                </div>
 
             </div>
 
@@ -78,15 +87,3 @@ const Registration = () => {
 }
 
 export default Registration
-
-
-{/*
-name
-surname 
-email
-password
-country
-city
-bio
-profile pic
-*/}
