@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar } from "@nextui-org/react";
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Supernavbar = () => {
 
@@ -11,6 +12,16 @@ const Supernavbar = () => {
         // Logica per effettuare il logout
         setIsLoggedIn(false);
     };
+
+    const navigate = useNavigate();
+
+    const goToRegister = () => {
+        navigate('/registration')
+    }
+
+    const goToLogin = () => {
+        navigate('/login')
+    }
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -51,12 +62,12 @@ const Supernavbar = () => {
 
             <NavbarContent justify="end">
                 <NavbarItem className="lg:flex">
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="#" onClick={goToLogin}>
                         Login
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Button as={Link} color="warning" href="#" variant="flat" radius="sm">
+                    <Button as={Link} color="warning" href="#" variant="flat" radius="sm" onClick={goToRegister}>
                         Sign Up
                     </Button>
                 </NavbarItem>

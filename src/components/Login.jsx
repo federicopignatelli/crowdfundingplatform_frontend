@@ -1,7 +1,7 @@
 import React from "react";
 import { Input, Button } from "@nextui-org/react";
-import { EyeSlashFilledIcon } from "../eyeicon/EyeSlashFilledIcon";
-import { EyeFilledIcon } from "../eyeicon/EyeFilledIcon";
+import { EyeSlashFilledIcon } from "../icons/EyeSlashFilledIcon";
+import { EyeFilledIcon } from "../icons/EyeFilledIcon";
 
 
 const Registration = () => {

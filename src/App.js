@@ -9,9 +9,8 @@ const App = () => {
     <BrowserRouter>
       <Supernavbar></Supernavbar>
       <Routes>
-        <Route path="/" element={<Login />} />
-        {/* <Route path="/registration" element={}/>
-        <Route path="/login" element={} />  */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
       </Routes>
     </BrowserRouter>
   )

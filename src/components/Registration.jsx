@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input, Textarea, Button } from "@nextui-org/react";
-import { EyeSlashFilledIcon } from "../eyeicon/EyeSlashFilledIcon";
-import { EyeFilledIcon } from "../eyeicon/EyeFilledIcon";
+import { EyeSlashFilledIcon } from "../icons/EyeSlashFilledIcon";
+import { EyeFilledIcon } from "../icons/EyeFilledIcon";
 
 
 const Registration = () => {
+
+    const [bio, setBio] = useState('');
+
+    const handleChange = (event) => {
+        const { value } = event.target;
+        // Limita la lunghezza massima a 250 caratteri
+        if (value.length <= 250) {
+            setBio(value);
+        }
+    };
+
 
     const [isVisible, setIsVisible] = React.useState(false);
 
@@ -69,7 +80,13 @@ const Registration = () => {
                         placeholder="Enter your description"
                         className=""
                         variant="bordered"
+                        id="bio"
+                        name="bio"
+                        value={bio}
+                        onChange={handleChange}
+                        maxLength={250}
                     />
+                    <p className="text-xs mt-1 ps-3">Caratteri rimanenti: {250 - bio.length}</p>
                 </div>
                 <div class="flex flex-col mb-5 mt-4 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <Button color="warning" variant="solid" className="sm:w-1/2 font-semibold text-base">
