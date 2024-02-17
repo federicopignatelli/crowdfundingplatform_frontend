@@ -1,10 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLongLeftIcon } from '@heroicons/react/24/outline'
 import { Input, Button } from "@nextui-org/react";
 import { EyeSlashFilledIcon } from "../icons/EyeSlashFilledIcon";
 import { EyeFilledIcon } from "../icons/EyeFilledIcon";
 
 
 const Registration = () => {
+
+    const navigate = useNavigate();
+    const goToHome = () => {
+        navigate('/home');
+    }
 
     const [isVisible, setIsVisible] = React.useState(false);
 
@@ -43,11 +50,11 @@ const Registration = () => {
                 />
 
                 <div class="flex flex-col mt-4 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ">
-                    <Button color="warning" variant="solid" className=" sm:w-1/2 font-semibold text-base">
-                        Login
+                    <Button color="default" variant="flat" className="sm:w-1/2" onClick={(goToHome)}>
+                        Go back <ArrowLongLeftIcon className="text-black w-6 h-6"></ArrowLongLeftIcon>
                     </Button>
-                    <Button color="default" variant="flat" className="sm:w-1/2 text-base">
-                        Registration
+                    <Button color="warning" variant="solid" className="sm:w-1/2 font-semibold text-base">
+                        Login
                     </Button>
                 </div>
             </div>
