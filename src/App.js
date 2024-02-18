@@ -4,6 +4,7 @@ import Supernavbar from './components/Supernavbar';
 import Home from './components/Home';
 import Login from './components/Login';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/registration" element={<Registration />} />
         <Route path="/home" element={<Home />} />
       </Routes>
+      {/* <Footer></Footer> */}
     </BrowserRouter>
   )
 }

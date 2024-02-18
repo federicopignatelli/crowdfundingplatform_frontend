@@ -30,7 +30,9 @@ const Registration = () => {
                     Insert your data
                 </label>
 
-                <Input type="email" variant="bordered" label="Email" placeholder="Enter your mail" className="mt-4" />
+                <Input type="email" variant="bordered" label="Email" placeholder="Enter your mail" className="mt-4"
+                    isRequired
+                />
 
                 <Input
                     label="Password"
@@ -47,6 +49,7 @@ const Registration = () => {
                     }
                     type={isVisible ? "text" : "password"}
                     className="mt-4"
+                    isRequired
                 />
 
                 <div class="flex flex-col mt-4 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ">
