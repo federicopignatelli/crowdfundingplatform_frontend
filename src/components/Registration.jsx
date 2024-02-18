@@ -10,9 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
     const dispatch = useDispatch();
-    const registering = useSelector(state => state.registering);
-    const success = useSelector(state => state.success);
-    const error = useSelector(state => state.error);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -59,15 +56,15 @@ const Registration = () => {
                     Insert your data
                 </label>
 
-                <Input type="text" variant="bordered" label="Name" placeholder="Enter your name" className="mt-4 focus:outline-none"
+                <Input type="text" variant="bordered" label="Name" placeholder="Enter your name" className="mt-4 focus:outline-none" isRequired
                     name="name" value={formData.name} onChange={handleInputChange}
                 />
 
-                <Input type="text" variant="bordered" label="Surname" placeholder="Enter your surname" className="mt-4"
+                <Input type="text" variant="bordered" label="Surname" placeholder="Enter your surname" className="mt-4" isRequired
                     name="surname" value={formData.surname} onChange={handleInputChange}
                 />
 
-                <Input type="email" variant="bordered" label="Email" placeholder="Enter your mail" className="mt-4"
+                <Input type="email" variant="bordered" label="Email" placeholder="Enter your mail" className="mt-4" isRequired
                     name="email" value={formData.email} onChange={handleInputChange}
                 />
 
@@ -86,6 +83,7 @@ const Registration = () => {
                     }
                     type={isVisible ? "text" : "password"}
                     className="mt-4"
+                    isRequired
 
                     name="password"
                     value={formData.password}
@@ -105,7 +103,7 @@ const Registration = () => {
                         onChange={handleInputChange}
                     />
                 </div>
-                <div className="mt-5">
+                {/* <div className="mt-5">
                     <label className="block text-gray-700  font-bold mb-2">
                         Upload profile picture
                     </label>
@@ -114,7 +112,7 @@ const Registration = () => {
                         value={formData.avatar}
                         onChange={handleInputChange}
                     />
-                </div>
+                </div> */}
 
                 <div className="mt-5">
                     <label className="block text-gray-700 font-bold mb-2">
