@@ -133,7 +133,7 @@ const Registration = () => {
                     />
                     <p className="text-xs mt-1 ps-3 text-gray-600">Caratteri rimanenti: {250 - formData.bio.length}</p>
                 </div>
-                <div class="flex flex-col mb-5 mt-4 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <div className="flex flex-col mb-5 mt-4 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <Button color="default" variant="flat" className="sm:w-1/2" onClick={(goToHome)}>
                         Go back <ArrowLongLeftIcon className="text-black w-6 h-6"></ArrowLongLeftIcon>
                     </Button>
