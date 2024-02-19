@@ -70,7 +70,7 @@ const Registration = () => {
                         setPassword(e.target.value)}
                 />
 
-                <div class="flex flex-col mt-4 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ">
+                <div className="flex flex-col mt-4 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ">
                     <Button color="default" variant="flat" className="sm:w-1/2" onClick={(goToHome)}>
                         Go back <ArrowLongLeftIcon className="text-black w-6 h-6"></ArrowLongLeftIcon>
                     </Button>

@@ -1,19 +1,21 @@
-// reducer.js
-import { LOGIN_SUCCESS, LOGIN_FAILURE, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../actions';
+// user.js
+import { LOGIN_SUCCESS, LOGIN_FAILURE, FETCH_USER_DATA_SUCCESS, FETCH_USER_DATA_FAILURE } from '../actions';
 
 const initialState = {
     token: null,
     error: null,
-    data: []
+    data: [],
+    isLoggedIn: false,
 };
 
-const reducer = (state = initialState, action) => {
+const reducerUser = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 token: action.payload,
-                error: null
+                error: null,
+                isLoggedIn: true
             };
         case LOGIN_FAILURE:
             return {
@@ -21,13 +23,13 @@ const reducer = (state = initialState, action) => {
                 token: null,
                 error: action.payload
             };
-        case FETCH_DATA_SUCCESS:
+        case FETCH_USER_DATA_SUCCESS:
             return {
                 ...state,
                 data: action.payload,
                 error: null
             };
-        case FETCH_DATA_FAILURE:
+        case FETCH_USER_DATA_FAILURE:
             return {
                 ...state,
                 data: null,
@@ -38,4 +40,4 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-export default reducer;
+export default reducerUser;

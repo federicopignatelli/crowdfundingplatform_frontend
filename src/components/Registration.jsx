@@ -90,7 +90,7 @@ const Registration = () => {
                     onChange={handleInputChange}
                 />
 
-                <div class="flex flex-row space-x-4">
+                <div className="flex flex-row space-x-4">
                     <Input type="text" variant="bordered" label="Country" placeholder="Enter your country" className="mt-4"
                         name="country"
                         value={formData.country}
@@ -121,7 +121,6 @@ const Registration = () => {
                     <Textarea
                         label="Description"
                         placeholder="Enter your description"
-                        className=""
                         variant="bordered"
                         id="bio"
 

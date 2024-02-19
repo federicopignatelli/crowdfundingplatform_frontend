@@ -3,8 +3,8 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
-export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+export const FETCH_USER_DATA_SUCCESS = 'FETCH_USER_DATA_SUCCESS';
+export const FETCH_USER_DATA_FAILURE = 'FETCH_USER_DATA_FAILURE';
 
 export const registerUser = (userData) => {
   return (dispatch) => {
@@ -46,6 +46,8 @@ export const login = (email, password) => {
           type: LOGIN_SUCCESS,
           payload: { token: data.token }
         });
+
+        dispatch(fetchUserData(data.token));
       }
 
     } catch (error) {
@@ -59,7 +61,7 @@ export const login = (email, password) => {
 
 
 
-export const fetchdata = (token) => {
+export const fetchUserData = (token) => {
   return async (dispatch) => {
     const url = 'http://localhost:4003/users/me';
     try {
@@ -71,7 +73,7 @@ export const fetchdata = (token) => {
       if (response.ok) {
         const userdata = await response.json();
         dispatch({
-          type: FETCH_DATA_SUCCESS,
+          type: FETCH_USER_DATA_SUCCESS,
           payload: userdata
         });
       }
@@ -79,7 +81,7 @@ export const fetchdata = (token) => {
     }
     catch (error) {
       dispatch({
-        type: FETCH_DATA_FAILURE,
+        type: FETCH_USER_DATA_FAILURE,
         payload: error.message
       });
     }

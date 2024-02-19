@@ -1,17 +1,20 @@
 import React from "react";
 import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar } from "@nextui-org/react";
+import { useSelector } from "react-redux";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import avatardefault from "../icons/avatarplaceholder.png"
 
 const Supernavbar = () => {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Stato iniziale di accesso utente
+    const userData = useSelector(state => state.user.data);
 
-    // Funzione per il logout
-    const handleLogout = () => {
-        // Logica per effettuare il logout
-        setIsLoggedIn(false);
-    };
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+
+    const handleLogOut = () => {
+        localStorage.removeItem('token');
+        window.location.assign('http://localhost:3000/home')
+    }
 
     const navigate = useNavigate();
 
@@ -60,46 +63,47 @@ const Supernavbar = () => {
                 </NavbarItem>
             </NavbarContent>
 
-            <NavbarContent justify="end">
-                <NavbarItem className="lg:flex">
-                    <Link color="foreground" href="#" onClick={goToLogin}>
-                        Login
-                    </Link>
-                </NavbarItem>
-                <NavbarItem>
-                    <Button as={Link} color="warning" href="#" variant="flat" radius="sm" onClick={goToRegister}>
-                        Sign Up
-                    </Button>
-                </NavbarItem>
-            </NavbarContent>
-
-            {/* <NavbarContent as="div" justify="end" className="">
-                <Dropdown placement="bottom-end">
-                    <DropdownTrigger>
-                        <Avatar
-                            isBordered
-                            as="button"
-                            className="transition-transform"
-                            color="secondary"
-                            name="Jason Hughes"
-                            size="sm"
-                            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                        />
-                    </DropdownTrigger>
-                    <DropdownMenu aria-label="Profile Actions" variant="flat">
-                        <DropdownItem key="profile" className="h-14 gap-2">
-                            <p className="font-semibold">Signed in as</p>
-                            <p className="font-semibold">zoey@example.com</p>
-                        </DropdownItem>
-                        <DropdownItem key="settings">Profile Settings</DropdownItem>
-                        <DropdownItem key="team_settings">My campaigns</DropdownItem>
-                        <DropdownItem key="analytics">My contributes</DropdownItem>
-                        <DropdownItem key="logout" color="warning">
-                            Log Out
-                        </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
-            </NavbarContent> */}
+            {isLoggedIn ? (
+                <NavbarContent as="div" justify="end" className="">
+                    <Dropdown placement="bottom-end">
+                        <DropdownTrigger>
+                            <Avatar
+                                isBordered
+                                as="button"
+                                className="transition-transform"
+                                color="warning"
+                                name={userData.name}
+                                src={userData.profilepic}
+                            />
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Profile Actions" variant="flat">
+                            <DropdownItem key="profile" className="h-14 gap-2">
+                                <p className="font-semibold">Signed in as</p>
+                                <p className="font-semibold">{userData.email}</p>
+                            </DropdownItem>
+                            <DropdownItem key="profile">Profile</DropdownItem>
+                            <DropdownItem key="mycampaigns">My campaigns</DropdownItem>
+                            <DropdownItem key="mycontributes">My contributes</DropdownItem>
+                            <DropdownItem key="logout" color="warning" onClick={handleLogOut}>
+                                Log Out
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                </NavbarContent>
+            ) : (
+                <NavbarContent justify="end">
+                    <NavbarItem className="lg:flex">
+                        <Link color="foreground" href="#" onClick={goToLogin}>
+                            Login
+                        </Link>
+                    </NavbarItem>
+                    <NavbarItem>
+                        <Button as={Link} color="warning" href="#" variant="flat" radius="sm" onClick={goToRegister}>
+                            Sign Up
+                        </Button>
+                    </NavbarItem>
+                </NavbarContent>
+            )}
 
             <NavbarMenu>
                 <NavbarMenuItem>
