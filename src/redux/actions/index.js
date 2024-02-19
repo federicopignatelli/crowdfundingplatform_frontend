@@ -48,6 +48,15 @@ export const login = (email, password) => {
         });
 
         dispatch(fetchUserData(data.token));
+      } else {
+        if (response.status === 404) {
+          dispatch({
+            type: LOGIN_FAILURE,
+            payload: 'user not found'
+          });
+        } else {
+          throw new Error('Login failed');
+        }
       }
 
     } catch (error) {

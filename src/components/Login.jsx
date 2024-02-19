@@ -1,6 +1,7 @@
 import React from "react";
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@nextui-org/react";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/actions'
 import { useNavigate } from "react-router-dom";
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline'
@@ -9,11 +10,20 @@ import { EyeSlashFilledIcon } from "../icons/EyeSlashFilledIcon";
 import { EyeFilledIcon } from "../icons/EyeFilledIcon";
 
 
-const Registration = () => {
+const Login = () => {
 
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isVisible, setIsVisible] = React.useState(false);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const error = useSelector((state) => state.user.error)
+
+    useEffect(() => {
+        if (error === 'user not found') {
+            onOpen();
+        }
+    }, [error, onOpen]);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -25,10 +35,7 @@ const Registration = () => {
         navigate('/home');
     }
 
-    const [isVisible, setIsVisible] = React.useState(false);
-
     const toggleVisibility = () => setIsVisible(!isVisible);
-
 
     return (
         <>
@@ -80,10 +87,30 @@ const Registration = () => {
                         Login
                     </Button>
                 </div>
+
+
+                <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalContent>
+                        <>
+                            <ModalHeader className="flex flex-col gap-1">Error Message</ModalHeader>
+                            <ModalBody>
+                                <p>
+                                    User not found. Please try again.
+                                </p>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="warning" onPress={onClose} className="">
+                                    Close
+                                </Button>
+                            </ModalFooter>
+                        </>
+                    </ModalContent>
+                </Modal>
+
             </div>
 
         </>
     )
 }
 
-export default Registration
+export default Login;
