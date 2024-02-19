@@ -31,7 +31,7 @@ export const login = (email, password) => {
   return async (dispatch) => {
     const url = 'http://localhost:4003/auth/login';
     try {
-      const token = await fetch(url, {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -39,18 +39,19 @@ export const login = (email, password) => {
         body: JSON.stringify({ email, password })
       })
 
-      if (token.ok) {
-        localStorage.setItem('token', token);
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
         dispatch({
           type: LOGIN_SUCCESS,
-          payload: token
+          payload: { token: data.token }
         });
       }
 
     } catch (error) {
       dispatch({
         type: LOGIN_FAILURE,
-        payload: error
+        payload: error.message
       });
     }
   }
