@@ -14,7 +14,7 @@ const Profile = () => {
                     isZoomed
                     alt="NextUI Fruit Image with Zoom"
                     src={userData.profilepic}
-                    className="w-40 max-h-56 sm:w-60"
+                    className="w-40 max-h-48 sm:w-60"
                 />
                 <div className="mt-4 sm:mt-0 sm:ml-5 flex flex-col sm:justify-center">
                     <p className="font-sans font-medium text-2xl sm:text-3xl">{userData.name}</p>

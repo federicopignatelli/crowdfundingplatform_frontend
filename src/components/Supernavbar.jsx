@@ -30,6 +30,10 @@ const Supernavbar = () => {
         navigate('/profile')
     }
 
+    const goToHome = () => {
+        navigate('/home')
+    }
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
@@ -44,14 +48,14 @@ const Supernavbar = () => {
             </NavbarContent>
 
             <NavbarContent className="sm:hidden" justify="start">
-                <NavbarBrand>
+                <NavbarBrand onClick={goToHome}>
                     {/* <AcmeLogo /> */}
                     <p className="font-mono text-2xl">TechFunds</p>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarBrand>
+                <NavbarBrand onClick={goToHome}>
                     {/* <AcmeLogo /> */}
                     <p className="font-mono text-2xl">TechFunds</p>
                 </NavbarBrand>
