@@ -26,6 +26,10 @@ const Supernavbar = () => {
         navigate('/login')
     }
 
+    const goToProfile = () => {
+        navigate('/profile')
+    }
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
@@ -81,7 +85,7 @@ const Supernavbar = () => {
                                 <p className="font-semibold">Signed in as</p>
                                 <p className="font-semibold">{userData.email}</p>
                             </DropdownItem>
-                            <DropdownItem key="profile">Profile</DropdownItem>
+                            <DropdownItem key="profile" onClick={goToProfile}>Profile</DropdownItem>
                             <DropdownItem key="mycampaigns">My campaigns</DropdownItem>
                             <DropdownItem key="mycontributes">My contributes</DropdownItem>
                             <DropdownItem key="logout" color="warning" onClick={handleLogOut}>
