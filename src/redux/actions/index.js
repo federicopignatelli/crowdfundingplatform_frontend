@@ -1,4 +1,5 @@
-export const REGISTER_REQUEST = 'REGISTER_REQUEST';
+export const USER_REGISTERED_SUCCESSFULLY = 'USER_REGISTERED_SUCCESSFULLY';
+export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -8,7 +9,6 @@ export const FETCH_USER_DATA_FAILURE = 'FETCH_USER_DATA_FAILURE';
 
 export const registerUser = (userData) => {
   return (dispatch) => {
-
     fetch('http://localhost:4003/auth/register', {
       method: 'POST',
       headers: {
@@ -20,11 +20,15 @@ export const registerUser = (userData) => {
         if (!response.ok) {
           throw new Error('Failed to register user');
         }
+        dispatch({ type: 'USER_REGISTERED_SUCCESSFULLY' });
       })
       .catch(error => {
+        console.error('Failed to register user', error);
+        dispatch({ type: 'REGISTER_USER_ERROR', error: error.message });
       });
   };
 };
+
 
 
 export const login = (email, password) => {
@@ -96,5 +100,9 @@ export const fetchUserData = (token) => {
     }
   }
 }
+
+
+
+
 
 

@@ -1,7 +1,8 @@
 // user.js
-import { LOGIN_SUCCESS, LOGIN_FAILURE, FETCH_USER_DATA_SUCCESS, FETCH_USER_DATA_FAILURE } from '../actions';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, FETCH_USER_DATA_SUCCESS, FETCH_USER_DATA_FAILURE, USER_REGISTERED_SUCCESSFULLY, REGISTER_USER_ERROR } from '../actions';
 
 const initialState = {
+    registration: null,
     token: null,
     error: null,
     data: [],
@@ -10,6 +11,17 @@ const initialState = {
 
 const reducerUser = (state = initialState, action) => {
     switch (action.type) {
+        case USER_REGISTERED_SUCCESSFULLY:
+            return {
+                ...state,
+                registration: true
+            };
+        case REGISTER_USER_ERROR:
+            return {
+                ...state,
+                registration: false,
+                error: action.payload
+            };
         case LOGIN_SUCCESS:
             return {
                 ...state,
