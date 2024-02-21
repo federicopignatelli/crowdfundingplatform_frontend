@@ -55,55 +55,62 @@ const Profile = () => {
 
     return (
         <>
-            <div className="container mx-auto px-5 max-w-5xl flex flex-col sm:flex-row mt-5">
-                {
-                    userData.profilepic ? (
-                        <Image
-                            isZoomed
-                            alt="NextUI Fruit Image with Zoom"
-                            src={userData.profilepic}
-                            className="max-h-48 sm:w-60"
-                            onClick={onOpen}
-                        />
-                    ) : (
-                        <Image
-                            isZoomed
-                            alt="NextUI Fruit Image with Zoom"
-                            src="https://cdn.dribbble.com/users/304574/screenshots/6222816/male-user-placeholder.png"
-                            className="max-h-48 sm:w-60"
-                            onClick={onOpen}
-                        />
-                    )
-                }
-                <div className="mt-4 sm:mt-0 sm:ml-5 flex flex-col sm:justify-center">
-                    <p className="font-sans font-medium text-2xl sm:text-3xl">{userData.name}</p>
-                    <p className="font-sans font-medium text-2xl sm:text-2xl">{userData.surname}</p>
+            <div className="bg-orange-300 p-8">
+                <div className="container mx-auto px-5 max-w-5xl flex flex-col sm:flex-row">
+                    {
+                        userData.profilepic ? (
+                            <Image
+                                isZoomed
+                                alt="NextUI Fruit Image with Zoom"
+                                src={userData.profilepic}
+                                className="max-h-48 sm:w-60"
+                                onClick={onOpen}
+                            />
+                        ) : (
+                            <Image
+                                isZoomed
+                                alt="NextUI Fruit Image with Zoom"
+                                src="https://cdn.dribbble.com/users/304574/screenshots/6222816/male-user-placeholder.png"
+                                className="max-h-48 sm:w-60"
+                                onClick={onOpen}
+                            />
+                        )
+                    }
+                    <div className="mt-4 sm:mt-0 sm:ml-5 flex flex-col sm:justify-center">
+                        <p className="font-sans font-medium text-3xl sm:text-5xl">{userData.name}</p>
+                        <p className="font-sans font-medium text-3xl sm:text-4xl">{userData.surname}</p>
+                    </div>
                 </div>
             </div>
-            <div className="container mx-auto px-5 max-w-5xl">
-                <Divider className="my-5"></Divider>
+            <Divider className="mb-5"></Divider>
 
-                <p className="font-sans text-sm font-bold">Email:</p>
-                <p className="font-sans">{userData.email}</p>
+            <div className="container mx-auto px-5 max-w-5xl flex flex-col sm:flex-row sm:space-x-12 ">
 
-                <Divider className="my-5"></Divider>
+                <div className="basis-2/5">
+                    <p className="font-sans text-sm font-bold">Email:</p>
+                    <p className="font-sans">{userData.email}</p>
 
-                <p className="font-sans text-sm font-bold">Country:</p>
-                <p className="font-sans">{userData.country}</p>
+                    <Divider className="my-5"></Divider>
 
-                <Divider className="my-5"></Divider>
+                    <p className="font-sans text-sm font-bold">Country:</p>
+                    <p className="font-sans">{userData.country}</p>
 
-                <p className="font-sans text-sm font-bold">City:</p>
-                <p className="font-sans">{userData.city}</p>
+                    <Divider className="my-5"></Divider>
 
-                <Divider className="my-5"></Divider>
+                    <p className="font-sans text-sm font-bold">City:</p>
+                    <p className="font-sans">{userData.city}</p>
 
-                <p className="font-sans text-sm font-bold">Biography:</p>
-                <p className="font-sans max-w-80">
-                    {userData.bio}
-                </p>
 
-                <Divider className="my-5"></Divider>
+                </div>
+
+                <div className="basis-3/5">
+                    <p className="font-sans text-sm font-bold">Biography:</p>
+                    <p className="font-sans">
+                        {userData.bio}
+                    </p>
+                </div>
+
+
             </div>
 
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
