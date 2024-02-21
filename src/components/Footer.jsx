@@ -1,21 +1,30 @@
 import React from 'react';
 
 const Footer = () => {
+    const getCurrentYear = () => {
+        return new Date().getFullYear();
+    };
+
     return (
-        <footer className="bg-white border-t border-gray-200 text-gray-600 py-4 text-sm mb-0">
-            <div className="container mx-auto flex flex-wrap justify-between items-center">
-                <div className="w-full md:w-auto mb-4 md:mb-0">
-                    <p className="text-center md:text-left">Informazioni casuali</p>
+        <footer className=" text-gray-400 py-2 w-full border-t border-gray-300">
+            <div className="container mx-auto flex flex-row justify-center sm:justify-between">
+                <div className="">
+                    <span className=" mr-1 text-sm">&copy;</span>
+                    <span className=" mr-1 text-sm">TechFunds</span>
+                    <span className=" text-sm">|</span>
+                    <span className=" ml-1 text-sm"> {getCurrentYear()}</span>
                 </div>
-                <div className="w-full md:w-auto">
-                    <ul className="flex justify-center md:justify-start">
-                        <li className="mr-6"><a href="#" className="hover:text-warning">Termini e condizioni</a></li>
-                        <li className="mr-6"><a href="#" className="hover:text-warning">Privacy Policy</a></li>
-                        <li><a href="#" className="hover:text-warning">Contatti</a></li>
+                <div className="flex flex-row">
+                    <ul className="  text-sm md:flex md:flex-row">
+                        <li className="mx-4">About us</li>
+                        <li className="mx-4">Our charter</li>
+                        <li className="mx-4">Stats</li>
                     </ul>
-                </div>
-                <div className="w-full md:w-auto mt-4 md:mt-0">
-                    <p className="text-center md:text-right">&copy; {new Date().getFullYear()} TechFunds. Tutti i diritti riservati.</p>
+                    <ul className="  text-sm md:flex md:flex-row">
+                        <li className="mx-4">Press</li>
+                        <li className="mx-4">Jobs</li>
+                        <li className="mx-4">Help Center</li>
+                    </ul>
                 </div>
             </div>
         </footer>
