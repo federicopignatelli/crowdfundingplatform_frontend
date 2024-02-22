@@ -103,7 +103,7 @@ const Profile = () => {
 
                 </div>
 
-                <div className="basis-3/5">
+                <div className="basis-3/5 mt-5 pt-5 border-t sm:border-0 sm:mt-0 sm:pt-0">
                     <p className="font-sans text-sm font-bold">Biography:</p>
                     <p className="font-sans">
                         {userData.bio}

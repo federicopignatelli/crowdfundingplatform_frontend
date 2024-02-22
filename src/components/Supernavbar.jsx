@@ -34,6 +34,10 @@ const Supernavbar = () => {
         navigate('/home')
     }
 
+    const goToCreateCampaign = () => {
+        navigate('/createcampaign')
+    }
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
@@ -50,25 +54,26 @@ const Supernavbar = () => {
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarBrand onClick={goToHome}>
                     {/* <AcmeLogo /> */}
-                    <p className="font-mono text-2xl">TechFunds</p>
+                    <p className="font-mono text-2xl cursor-pointer">TechFunds</p>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarBrand onClick={goToHome}>
                     {/* <AcmeLogo /> */}
-                    <p className="font-mono text-2xl">TechFunds</p>
+                    <p className="font-mono text-2xl cursor-pointer">TechFunds</p>
                 </NavbarBrand>
                 <NavbarItem>
                     <Link color="foreground" href="#">
                         Explore campaigns
                     </Link>
                 </NavbarItem>
-                <NavbarItem> {/* "isActive" da applicare a NavbarItem per indicare che il kink è attivo */}
-                    <Link href="#" aria-current="page" color="warning" className="font-medium">
+                {isLoggedIn ? (<NavbarItem>
+                    <Link href="#" aria-current="page" color="warning" className="font-medium" onClick={goToCreateCampaign}>
                         Create campaign
                     </Link>
-                </NavbarItem>
+                </NavbarItem>) : (null)}
+
             </NavbarContent>
 
             {isLoggedIn ? (
