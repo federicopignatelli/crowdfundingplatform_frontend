@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Footer from './components/Footer';
 import Profile from './components/Profile';
 import CreateCampaign from './components/Createcampaign';
+import Campaign from './components/Campaign';
 
 const App = () => {
   return (
@@ -14,11 +15,12 @@ const App = () => {
       <div className="min-h-full">
         <Supernavbar></Supernavbar>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile" element={<Profile />} />"
-          <Route path="/createcampaign" element={<CreateCampaign />} />
+          <Route path="/createcampaign" element={<CreateCampaign />} /> */}
+          <Route path="/" element={<Campaign />} />
         </Routes>
         <Footer></Footer>
       </div>
