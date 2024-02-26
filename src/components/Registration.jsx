@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { registerUser } from "../redux/actions";
 import { Input, Textarea, Button } from "@nextui-org/react";
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline'
