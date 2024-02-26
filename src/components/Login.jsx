@@ -35,6 +35,7 @@ const Login = () => {
         navigate('/home');
     }
 
+
     const toggleVisibility = () => setIsVisible(!isVisible);
 
     return (

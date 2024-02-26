@@ -86,7 +86,7 @@ const Supernavbar = () => {
                                 className="transition-transform"
                                 color="warning"
                                 name={userData.name}
-                                src={userData.profilepic}
+                                src={userData.profilepic ? userData.profilepic : avatardefault}
                             />
                         </DropdownTrigger>
                         <DropdownMenu aria-label="Profile Actions" variant="flat">

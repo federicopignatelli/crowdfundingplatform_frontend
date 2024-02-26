@@ -21,6 +21,7 @@ export const registerUser = (userData) => {
           throw new Error('Failed to register user');
         }
         dispatch({ type: 'USER_REGISTERED_SUCCESSFULLY' });
+        alert("Registered successfully!");
       })
       .catch(error => {
         console.error('Failed to register user', error);
