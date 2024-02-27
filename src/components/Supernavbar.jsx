@@ -38,6 +38,10 @@ const Supernavbar = () => {
         navigate('/createcampaign')
     }
 
+    const goToExploreCampaign = () => {
+        navigate('/explorecampaign')
+    }
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
@@ -64,7 +68,7 @@ const Supernavbar = () => {
                     <p className="font-mono text-2xl cursor-pointer">TechFunds</p>
                 </NavbarBrand>
                 <NavbarItem>
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="#" onClick={goToExploreCampaign}>
                         Explore campaigns
                     </Link>
                 </NavbarItem>
@@ -120,12 +124,12 @@ const Supernavbar = () => {
 
             <NavbarMenu>
                 <NavbarMenuItem>
-                    <Link color="foreground" href="#" className="w-full">
+                    <Link color="foreground" href="#" className="w-full" onClick={goToExploreCampaign}>
                         Explore campaigns
                     </Link>
-                    <Link href="#" aria-current="page" color="warning" className="font-normal">
+                    {isLoggedIn ? (<Link href="#" aria-current="page" color="warning" className="font-normal" onClick={goToCreateCampaign}>
                         Create campaign
-                    </Link>
+                    </Link>) : (null)}
                 </NavbarMenuItem>
 
             </NavbarMenu>

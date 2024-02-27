@@ -1,6 +1,7 @@
 import React from "react";
 import { Progress } from "@nextui-org/react";
 import { Chip } from "@nextui-org/react";
+import { User } from "@nextui-org/react";
 
 
 const Campaign = () => {
@@ -15,11 +16,14 @@ const Campaign = () => {
                     alt="Immagine di copertina"
                 />
             </div>
-            <div className="container mx-auto px-4 mt-3 max-w-5xl flex flex-col sm:flex-row gap-x-8">
+            <div className="container mx-auto justify-items-center px-4 mt-3 max-w-5xl flex flex-col sm:flex-row gap-x-8">
                 <div className="basis-3/5 ">
                     <Chip size="sm" color="warning" variant="flat" className="tracking-widest my-2">Tecnology</Chip>
                     <p className="font-mono text-5xl font-bold mb-2">Smartphone</p>
-                    <p className="font-sans text-lg font-normal italic leading-5 mb-2">Best smartphone in the world Labore irure excepteur voluptate</p>
+                    <p className="font-sans text-lg font-normal italic leading-5 mb-2 max-w-md">
+                        Best smartphone in the world Labore irure excepteur voluptate cillum ea elit aliqua officia irure magna in.
+
+                    </p>
                     <p className="text-sm mb-5 text-right sm:text-left text-gray-500"> Created on 20/20/2014</p>
 
 
@@ -41,11 +45,18 @@ const Campaign = () => {
                 </div>
 
                 <div className="mt-5 sm:mt-10 basis-2/5 ">
-                    <p className="text-lg sm:text-xl font-mono uppercase font-bold">Description:</p>
-                    <p className="leading-5 text-sm sm:text-base">
+                    <p className="text-lg sm:text-xl font-mono  font-bold">Description:</p>
+                    <p className="leading-5 text-sm sm:text-base mb-4">
                         Occaecat est commodo officia cillum ea elit aliqua officia irure magna in.
                         Culpa in eiusmod cillum nisi duis reprehenderit enim occaecat.
                     </p>
+                    <User
+                        name="Jane Doe"
+                        description="Project creator"
+                        avatarProps={{
+                            src: "https://i.pravatar.cc/150?u=a04258114e29026702d"
+                        }}
+                    />
                 </div>
 
             </div>

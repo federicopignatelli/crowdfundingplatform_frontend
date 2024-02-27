@@ -78,7 +78,7 @@ const Profile = () => {
                     }
                     <div className="mt-4 sm:mt-0 sm:ml-5 flex flex-col sm:justify-center">
                         <p className="font-sans font-medium text-3xl sm:text-5xl">{userData.name}</p>
-                        <p className="font-sans font-medium text-3xl sm:text-4xl">{userData.surname}</p>
+                        <p className="font-sans font-medium text-3xl sm:text-5xl">{userData.surname}</p>
                     </div>
                 </div>
             </div>
