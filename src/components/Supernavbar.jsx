@@ -13,7 +13,7 @@ const Supernavbar = () => {
 
     const handleLogOut = () => {
         localStorage.removeItem('token');
-        window.location.assign('http://localhost:3000/home')
+        window.location.assign('http://localhost:3000/')
     }
 
     const navigate = useNavigate();
