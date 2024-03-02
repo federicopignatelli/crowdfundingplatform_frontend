@@ -11,6 +11,7 @@ const Profile = () => {
     const dispatch = useDispatch();
     const userData = useSelector((state) => state.user.data);
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileChange = (e) => {

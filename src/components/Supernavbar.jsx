@@ -42,8 +42,8 @@ const Supernavbar = () => {
         navigate('/explorecampaign')
     }
 
-    const goToMyCampaign = () => {
-        navigate('/mycampaign')
+    const goToMyCampaigns = () => {
+        navigate('/mycampaigns')
     }
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -103,7 +103,7 @@ const Supernavbar = () => {
                                 <p className="font-semibold">{userData.email}</p>
                             </DropdownItem>
                             <DropdownItem key="profilepages" onClick={goToProfile} textValue="Profile">Profile</DropdownItem>
-                            <DropdownItem key="mycampaigns" onClick={goToMyCampaign} textValue="My campaigns">My campaigns</DropdownItem>
+                            <DropdownItem key="mycampaigns" onClick={goToMyCampaigns} textValue="My campaigns">My campaigns</DropdownItem>
                             <DropdownItem key="mycontributes" textValue="My contributes">My contributes</DropdownItem>
                             <DropdownItem key="logout" color="warning" textValue="Log Out" onClick={handleLogOut}>
                                 Log Out

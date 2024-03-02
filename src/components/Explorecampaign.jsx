@@ -12,14 +12,9 @@ const ExploreCampaign = () => {
     const dispatch = useDispatch();
     const allcampaigns = useSelector(state => state.campaign.allcampaigns);
 
-
-
     useEffect(() => {
         dispatch(getCampaignData());
     }, [dispatch]);
-
-
-
 
     return (
         <>
