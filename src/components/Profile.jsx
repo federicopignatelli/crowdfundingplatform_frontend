@@ -39,7 +39,6 @@ const Profile = () => {
             });
 
             if (response.ok) {
-                alert("Avatar uploaded successfully!");
 
                 dispatch(fetchUserData(token))
 

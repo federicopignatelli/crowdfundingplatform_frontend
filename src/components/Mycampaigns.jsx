@@ -52,7 +52,6 @@ const Mycampaigns = () => {
             });
 
             if (response.ok) {
-                alert("Avatar uploaded successfully!");
 
                 dispatch(getCampaignData())
 
