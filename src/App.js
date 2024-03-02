@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import CreateCampaign from './components/Createcampaign';
 import Campaign from './components/Campaign';
 import ExploreCampaign from './components/Explorecampaign';
+import Mycampaigns from './components/Mycampaigns';
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/createcampaign" element={<CreateCampaign />} />
           <Route path="/campaign/:campaignId" element={<Campaign />} />
           <Route path="/explorecampaign" element={<ExploreCampaign />} />
+          <Route path="/mycampaigns" element={<Mycampaigns />} />
         </Routes>
         <Footer></Footer>
       </div>

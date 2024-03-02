@@ -13,7 +13,7 @@ const reducerCampaign = (state = initialState, action) => {
         case FETCH_CAMPAIGN_DATA_SUCCESS:
             return {
                 ...state,
-                allcampaigns: [...state.allcampaigns, ...action.payload.content],
+                allcampaigns: [...action.payload.content],
                 totalPages: action.payload.totalPages,
                 currentPage: action.payload.pageable.pageNumber,
             };

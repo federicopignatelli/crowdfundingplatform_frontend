@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCampaignData } from '../redux/actions/campaign';
 import iconcard from '../icons/logo.png'
@@ -12,9 +12,13 @@ const ExploreCampaign = () => {
     const dispatch = useDispatch();
     const allcampaigns = useSelector(state => state.campaign.allcampaigns);
 
+
+
     useEffect(() => {
         dispatch(getCampaignData());
     }, [dispatch]);
+
+
 
 
     return (
@@ -42,6 +46,7 @@ const ExploreCampaign = () => {
                                 <p className="font-mono text-2xl font-bold mb-1">{campaign.title}</p>
                                 <p className='leading-5 text-sm'>{campaign.subtitle}</p>
                                 <Progress
+                                    aria-label="Progresso della campagna"
                                     label=""
                                     size="sm"
                                     value={campaign.totalFunds}

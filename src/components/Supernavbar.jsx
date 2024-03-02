@@ -31,7 +31,7 @@ const Supernavbar = () => {
     }
 
     const goToHome = () => {
-        navigate('/home')
+        navigate('/')
     }
 
     const goToCreateCampaign = () => {
@@ -40,6 +40,10 @@ const Supernavbar = () => {
 
     const goToExploreCampaign = () => {
         navigate('/explorecampaign')
+    }
+
+    const goToMyCampaign = () => {
+        navigate('/mycampaign')
     }
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -93,15 +97,15 @@ const Supernavbar = () => {
                                 src={userData.profilepic ? userData.profilepic : avatardefault}
                             />
                         </DropdownTrigger>
-                        <DropdownMenu aria-label="Profile Actions" variant="flat">
-                            <DropdownItem key="profile" className="h-14 gap-2">
+                        <DropdownMenu aria-label="Profile Actions" textValue="Profile Actions" variant="flat">
+                            <DropdownItem key="profile" className="h-14 gap-2" textValue="Profile">
                                 <p className="font-semibold">Signed in as</p>
                                 <p className="font-semibold">{userData.email}</p>
                             </DropdownItem>
-                            <DropdownItem key="profile" onClick={goToProfile}>Profile</DropdownItem>
-                            <DropdownItem key="mycampaigns">My campaigns</DropdownItem>
-                            <DropdownItem key="mycontributes">My contributes</DropdownItem>
-                            <DropdownItem key="logout" color="warning" onClick={handleLogOut}>
+                            <DropdownItem key="profilepages" onClick={goToProfile} textValue="Profile">Profile</DropdownItem>
+                            <DropdownItem key="mycampaigns" onClick={goToMyCampaign} textValue="My campaigns">My campaigns</DropdownItem>
+                            <DropdownItem key="mycontributes" textValue="My contributes">My contributes</DropdownItem>
+                            <DropdownItem key="logout" color="warning" textValue="Log Out" onClick={handleLogOut}>
                                 Log Out
                             </DropdownItem>
                         </DropdownMenu>
@@ -123,15 +127,18 @@ const Supernavbar = () => {
             )}
 
             <NavbarMenu>
-                <NavbarMenuItem>
+                <NavbarMenuItem textValue="Explore campaigns">
                     <Link color="foreground" href="#" className="w-full" onClick={goToExploreCampaign}>
                         Explore campaigns
                     </Link>
-                    {isLoggedIn ? (<Link href="#" aria-current="page" color="warning" className="font-normal" onClick={goToCreateCampaign}>
-                        Create campaign
-                    </Link>) : (null)}
                 </NavbarMenuItem>
-
+                {isLoggedIn ? (
+                    <NavbarMenuItem textValue="Create campaign">
+                        <Link href="#" aria-current="page" color="warning" className="font-normal" onClick={goToCreateCampaign}>
+                            Create campaign
+                        </Link>
+                    </NavbarMenuItem>
+                ) : (null)}
             </NavbarMenu>
         </Navbar>
     );

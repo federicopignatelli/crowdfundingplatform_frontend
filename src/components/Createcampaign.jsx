@@ -49,7 +49,7 @@ const CreateCampaign = () => {
                 alert("Error: " + data.message);
             }
 
-            navigate('/profile');
+            navigate('/mycampaigns');
 
         } catch (error) {
             console.error('Error saving campaign:', error.message);
