@@ -115,7 +115,7 @@ const Editcampaign = () => {
 
                 <div className="flex flex-col mb-5 mt-3 sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <Button color="default" variant="flat" className="sm:w-1/2"
-                        onClick={(goToMyCampaigns)}
+                        onClick={goToMyCampaigns}
                     >
                         Go back <ArrowLongLeftIcon className="text-black w-6 h-6"></ArrowLongLeftIcon>
                     </Button>
