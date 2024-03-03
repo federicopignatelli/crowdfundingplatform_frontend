@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline'
-import { Input, Textarea, Button, Tooltip } from "@nextui-org/react";
+import { Input, Textarea, Button } from "@nextui-org/react";
 
 const Editcampaign = () => {
 

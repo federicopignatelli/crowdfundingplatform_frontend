@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
 import { Input, Textarea, Button, Tooltip } from "@nextui-org/react";
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline'
 import { ExclamationTriangleIcon } from '@heroicons/react/16/solid'
@@ -13,11 +12,7 @@ const CreateCampaign = () => {
         navigate('/home');
     }
 
-    const goToMyCampaigns = () => {
-        navigate('/mycampaigns')
-    }
 
-    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         title: '',
         subtitle: '',

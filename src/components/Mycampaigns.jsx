@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCampaignData } from '../redux/actions/campaign';
-import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 import iconcard from '../icons/logo.png'
@@ -15,11 +14,8 @@ import { EyeIcon } from "../icons/Eyeicon";
 const Mycampaigns = () => {
     //NAVIGAZIONE E IMPORT
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const goToEditCampaign = () => {
-        navigate('/EditCampaign')
-    }
+
 
     //CARICAMENTO CAMPAGNE CREATE DALL'UTENTE
     const userId = useSelector(state => state.user.data.userId);

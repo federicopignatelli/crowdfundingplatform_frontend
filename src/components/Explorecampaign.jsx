@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCampaignData } from '../redux/actions/campaign';
 import iconcard from '../icons/logo.png'
