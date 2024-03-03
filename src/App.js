@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/campaign/:campaignId" element={<Campaign />} />
           <Route path="/explorecampaign" element={<ExploreCampaign />} />
           <Route path="/mycampaigns" element={<Mycampaigns />} />
-          <Route path="/editcampaigns" element={<Editcampaign />} />
+          <Route path="/campaigns/edit/:campaignId" element={<Editcampaign />} />
 
         </Routes>
         <Footer></Footer>

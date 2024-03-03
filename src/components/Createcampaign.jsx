@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Input, Textarea, Button, Tooltip } from "@nextui-org/react";
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline'
@@ -6,6 +7,16 @@ import { ExclamationTriangleIcon } from '@heroicons/react/16/solid'
 import { useNavigate } from "react-router-dom";
 
 const CreateCampaign = () => {
+
+    const navigate = useNavigate();
+    const goToHome = () => {
+        navigate('/home');
+    }
+
+    const goToMyCampaigns = () => {
+        navigate('/mycampaigns')
+    }
+
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         title: '',
@@ -19,16 +30,6 @@ const CreateCampaign = () => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-
-
-    const navigate = useNavigate();
-    const goToHome = () => {
-        navigate('/home');
-    }
-
-    const goToMyCampaigns = () => {
-        navigate('/mycampaigns')
-    }
 
 
     const token = localStorage.getItem('token');

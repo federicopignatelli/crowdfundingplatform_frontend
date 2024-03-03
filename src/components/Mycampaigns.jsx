@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCampaignData } from '../redux/actions/campaign';
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import iconcard from '../icons/logo.png'
-import { Link } from 'react-router-dom';
 import { Chip, Tooltip, Divider, Progress, Button, useDisclosure, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@nextui-org/react";
 import { EditIcon } from "../icons/EditIcon";
 import { DeleteIcon } from "../icons/DeleteIcon";
@@ -13,30 +13,29 @@ import { EyeIcon } from "../icons/Eyeicon";
 
 
 const Mycampaigns = () => {
+    //NAVIGAZIONE E IMPORT
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const [selectedFile, setSelectedFile] = useState(null);
+    const goToEditCampaign = () => {
+        navigate('/EditCampaign')
+    }
 
+    //CARICAMENTO CAMPAGNE CREATE DALLE'UTENTE
+    const userId = useSelector(state => state.user.data.userId);
+    const myCampaigns = useSelector(state =>
+        state.campaign.allcampaigns.filter(campaign => campaign.userId.userId === userId));
+
+
+
+
+    //COVER CAMPAGNA 
+    const [selectedFile, setSelectedFile] = useState(null);
     const [selectedCampaignId, setSelectedCampaignId] = useState(null);
 
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
     };
-
-    const navigate = useNavigate();
-
-    const goToEditCampaign = () => {
-        navigate('/EditCampaign')
-    }
-
-    const userId = useSelector(state => state.user.data.userId);
-
-    const myCampaigns = useSelector(state =>
-        state.campaign.allcampaigns.filter(campaign => campaign.userId.userId === userId));
-
-    useEffect(() => {
-        dispatch(getCampaignData());
-    }, [dispatch]);
 
     const handleSubmitCover = async () => {
         if (!selectedFile) {
@@ -73,6 +72,10 @@ const Mycampaigns = () => {
 
     };
 
+    //aggiornamento campagne
+    useEffect(() => {
+        dispatch(getCampaignData());
+    }, [dispatch]);
 
     return (
         <>
@@ -123,9 +126,11 @@ const Mycampaigns = () => {
                                 </span>
                             </Tooltip>
                             <Tooltip content="Edit Campaign">
-                                <span className="text-3xl text-default-600 cursor-pointer active:opacity-50">
-                                    <EditIcon />
-                                </span>
+                                <Link to={`/campaigns/edit/${campaign.campaignId}`}>
+                                    <span className="text-3xl text-default-600 cursor-pointer active:opacity-50">
+                                        <EditIcon />
+                                    </span>
+                                </Link>
                             </Tooltip>
                             <Tooltip color="danger" content="Delete Campaign">
                                 <span className="text-3xl text-danger cursor-pointer active:opacity-50">
