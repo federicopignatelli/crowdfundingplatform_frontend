@@ -21,12 +21,10 @@ const Mycampaigns = () => {
         navigate('/EditCampaign')
     }
 
-    //CARICAMENTO CAMPAGNE CREATE DALLE'UTENTE
+    //CARICAMENTO CAMPAGNE CREATE DALL'UTENTE
     const userId = useSelector(state => state.user.data.userId);
     const myCampaigns = useSelector(state =>
         state.campaign.allcampaigns.filter(campaign => campaign.userId.userId === userId));
-
-
 
 
     //COVER CAMPAGNA 
