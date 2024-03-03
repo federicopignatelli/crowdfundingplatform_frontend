@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCampaignData } from '../redux/actions/campaign';
+import { useNavigate } from "react-router-dom";
 
 import iconcard from '../icons/logo.png'
 import { Link } from 'react-router-dom';
@@ -21,6 +22,12 @@ const Mycampaigns = () => {
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
     };
+
+    const navigate = useNavigate();
+
+    const goToEditCampaign = () => {
+        navigate('/EditCampaign')
+    }
 
     const userId = useSelector(state => state.user.data.userId);
 
