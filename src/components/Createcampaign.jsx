@@ -26,6 +26,10 @@ const CreateCampaign = () => {
         navigate('/home');
     }
 
+    const goToMyCampaigns = () => {
+        navigate('/mycampaigns')
+    }
+
 
     const token = localStorage.getItem('token');
 

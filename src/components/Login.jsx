@@ -17,26 +17,33 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isVisible, setIsVisible] = React.useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const error = useSelector((state) => state.user.error)
+    const error = useSelector((state) => state.user.error);
+
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+
 
     useEffect(() => {
         if (error === 'user not found') {
-            onOpen();
+            onOpen()
         }
-    }, [error, onOpen]);
+    }, [error, onOpen])
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(login(email, password));
-    };
+        dispatch(login(email, password))
+    }
 
     const navigate = useNavigate();
     const goToHome = () => {
-        navigate('/home');
+        navigate('/home')
+    }
+
+    const goToProfile = () => {
+        navigate('/profile')
     }
 
 
-    const toggleVisibility = () => setIsVisible(!isVisible);
+    const toggleVisibility = () => setIsVisible(!isVisible)
 
     return (
         <>

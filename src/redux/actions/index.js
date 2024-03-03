@@ -1,3 +1,4 @@
+
 export const USER_REGISTERED_SUCCESSFULLY = 'USER_REGISTERED_SUCCESSFULLY';
 export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
 
@@ -6,6 +7,9 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export const FETCH_USER_DATA_SUCCESS = 'FETCH_USER_DATA_SUCCESS';
 export const FETCH_USER_DATA_FAILURE = 'FETCH_USER_DATA_FAILURE';
+
+
+
 
 export const registerUser = (userData) => {
   return (dispatch) => {
@@ -29,7 +33,6 @@ export const registerUser = (userData) => {
       });
   };
 };
-
 
 
 export const login = (email, password) => {
