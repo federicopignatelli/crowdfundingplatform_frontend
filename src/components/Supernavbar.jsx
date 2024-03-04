@@ -11,9 +11,15 @@ const Supernavbar = () => {
 
     const isLoggedIn = useSelector(state => state.user.isLoggedIn)
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const handleLogOut = () => {
         localStorage.removeItem('token');
         window.location.assign('http://localhost:3000/')
+    }
+
+    const handleCloseMenu = () => {
+        setIsMenuOpen(false);
     }
 
     const navigate = useNavigate();
@@ -46,15 +52,12 @@ const Supernavbar = () => {
         navigate('/mycampaigns')
     }
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-
-    const handleMenuOpenChange = (newState) => {
-        setIsMenuOpen(newState);
-    };
-
     return (
-        <Navbar isBordered shouldHideOnScroll>
+        <Navbar isBordered
+            shouldHideOnScroll
+            isMenuOpen={isMenuOpen}
+            onMenuOpenChange={setIsMenuOpen}
+        >
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle />
             </NavbarContent>
@@ -126,15 +129,21 @@ const Supernavbar = () => {
                 </NavbarContent>
             )}
 
-            <NavbarMenu>
+            <NavbarMenu onClick={handleCloseMenu}>
                 <NavbarMenuItem textValue="Explore campaigns">
-                    <Link color="foreground" href="#" className="w-full" onClick={goToExploreCampaign}>
+                    <Link color="foreground" href="#" className="w-full" onClick={() => {
+                        goToExploreCampaign();
+                        handleCloseMenu();
+                    }}>
                         Explore campaigns
                     </Link>
                 </NavbarMenuItem>
                 {isLoggedIn ? (
                     <NavbarMenuItem textValue="Create campaign">
-                        <Link href="#" aria-current="page" color="warning" className="font-normal" onClick={goToCreateCampaign}>
+                        <Link href="#" aria-current="page" color="warning" className="font-normal" onClick={() => {
+                            goToCreateCampaign();
+                            handleCloseMenu();
+                        }}>
                             Create campaign
                         </Link>
                     </NavbarMenuItem>
