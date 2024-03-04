@@ -19,7 +19,6 @@ const Login = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const error = useSelector((state) => state.user.error);
 
-    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
 
     useEffect(() => {
@@ -38,9 +37,6 @@ const Login = () => {
         navigate('/home')
     }
 
-    const goToProfile = () => {
-        navigate('/profile')
-    }
 
 
     const toggleVisibility = () => setIsVisible(!isVisible)

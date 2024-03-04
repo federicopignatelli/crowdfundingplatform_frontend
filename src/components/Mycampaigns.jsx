@@ -23,6 +23,36 @@ const Mycampaigns = () => {
         state.campaign.allcampaigns.filter(campaign => campaign.userId.userId === userId));
 
 
+    //DELETE CAMPAGNA
+    const handleDeleteCampaign = async (campaignId) => {
+        const confirmDelete = window.confirm("Sei sicuro di voler eliminare questa campagna?");
+
+        if (!confirmDelete) {
+            return;
+        }
+        const token = localStorage.getItem('token');
+
+        try {
+            const response = await fetch(`http://localhost:4003/campaign/${campaignId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                dispatch(getCampaignData());
+            } else {
+                const data = await response.json();
+                alert("Error: " + data.message);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred while deleting the campaign.");
+        }
+    };
+
+
     //COVER CAMPAGNA 
     const [selectedFile, setSelectedFile] = useState(null);
     const [selectedCampaignId, setSelectedCampaignId] = useState(null);
@@ -115,9 +145,11 @@ const Mycampaigns = () => {
 
                         <div className="flex flex-row justify-center gap-8 py-3">
                             <Tooltip content="See Campaign">
-                                <span className="text-3xl text-default-600 cursor-pointer active:opacity-50">
-                                    <EyeIcon />
-                                </span>
+                                <Link to={`/campaign/${campaign.campaignId}`}>
+                                    <span className="text-3xl text-default-600 cursor-pointer active:opacity-50">
+                                        <EyeIcon />
+                                    </span>
+                                </Link>
                             </Tooltip>
                             <Tooltip content="Edit Campaign">
                                 <Link to={`/campaigns/edit/${campaign.campaignId}`}>
@@ -127,7 +159,9 @@ const Mycampaigns = () => {
                                 </Link>
                             </Tooltip>
                             <Tooltip color="danger" content="Delete Campaign">
-                                <span className="text-3xl text-danger cursor-pointer active:opacity-50">
+                                <span className="text-3xl text-danger cursor-pointer active:opacity-50"
+                                    onClick={() => handleDeleteCampaign(campaign.campaignId)}
+                                >
                                     <DeleteIcon />
                                 </span>
                             </Tooltip>
