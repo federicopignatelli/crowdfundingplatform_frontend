@@ -21,3 +21,8 @@ This repository only includes the front-end project, if you also want to view th
 
 - Front-end: Javascript, React, Redux, React Router Dom, Tailwind css.
 - Back-end: Java, Maven, SpringBoot, PostgreSQL, JWT token.
+
+## 🔗 Contacts:
+
+- [Linkedin ](https://www.linkedin.com/in/federicopignatelli-developer/)
+- [Github](https://github.com/federicopignatelli)
