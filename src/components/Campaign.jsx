@@ -13,8 +13,7 @@ import coverplaceholder from '../icons/logoxl.png'
 const Campaign = () => {
 
     const { campaignId } = useParams();
-    const singleCampaignData = useSelector(state =>
-        state.campaign.allcampaigns.find(campaign => campaign.campaignId === campaignId));
+    const singleCampaignData = useSelector(state => state.campaign.allcampaigns.find(campaign => campaign.campaignId === campaignId));
 
     return (
         <>

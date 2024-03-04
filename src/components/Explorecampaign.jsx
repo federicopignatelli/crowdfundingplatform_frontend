@@ -21,25 +21,27 @@ const ExploreCampaign = () => {
             <div className='mt-5 grid grid-cols-1 gap-5 lg:gap-8 justify-items-center mx-auto px-5 max-w-6xl sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                 {allcampaigns.map(campaign => (
                     <Link to={`/campaign/${campaign.campaignId}`} key={campaign.campaignId}>
-                        <div className='w-full max-w-96 sm:w-60 border border-gray-200 rounded-md overflow-hidden transition-all duration-500 hover:ease-out hover:shadow-xl hover:shadow-gray-200 hover:-translate-y-0.5'>
+                        <div className='w-full max-w-96 sm:w-60 h-96 flex flex-col justify-between border border-gray-200 rounded-md overflow-hidden transition-all duration-500 hover:ease-out hover:shadow-xl hover:shadow-gray-200 hover:-translate-y-0.5'>
 
                             {
                                 campaign.campaignCover ? (
                                     <img src={campaign.campaignCover}
                                         alt='campaign cover'
-                                        className='w-full h-60 sm:h-52 object-cover object-center'>
+                                        className='w-96 h-60 sm:h-52 object-cover object-center'>
                                     </img>
                                 ) : (
                                     <img src={iconcard}
                                         alt='campaign cover'
-                                        className='w-full h-60 sm:h-52 object-cover object-center'>
+                                        className='w-96 h-60 sm:h-52 object-cover object-center'>
                                     </img>
                                 )
                             }
-                            <div className='p-3'>
-                                <Chip size="sm" color="warning" variant="flat" className="tracking-widest my-1">{campaign.category}</Chip>
-                                <p className="font-mono text-2xl font-bold mb-1">{campaign.title}</p>
-                                <p className='leading-5 text-sm'>{campaign.subtitle}</p>
+                            <div className='flex flex-col justify-between h-44 p-5'>
+                                <div className='flex flex-col justify-start'>
+                                    <Chip size="sm" color="warning" variant="flat" className="tracking-widest my-1">{campaign.category}</Chip>
+                                    <p className="font-mono text-2xl font-bold mb-1 tracking-tight leading-ticht">{campaign.title}</p>
+                                    <p className='leading-5 text-sm'>{campaign.subtitle}</p>
+                                </div>
                                 <Progress
                                     aria-label="Progresso della campagna"
                                     label=""
