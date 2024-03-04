@@ -7,7 +7,8 @@ TechFunds is a crowdfunding platform that allows users to submit a project and d
 ## ⚙️Back-end repository
 
 This repository only includes the front-end project, if you also want to view the back-end click here:
-[**BACKEND-REPOSITORY**](https://github.com/federicopignatelli/crowdfundingplatform_backend)
+
+- [**BACKEND-REPOSITORY**](https://github.com/federicopignatelli/crowdfundingplatform_backend)
 
 ## 📋Functionality
 
