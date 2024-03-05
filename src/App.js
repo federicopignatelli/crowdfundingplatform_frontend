@@ -11,6 +11,7 @@ import Campaign from './components/Campaign';
 import ExploreCampaign from './components/Explorecampaign';
 import Mycampaigns from './components/Mycampaigns';
 import Editcampaign from './components/Editcampaign';
+import Mycontributes from './components/Mycontribute';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/campaign/:campaignId" element={<Campaign />} />
           <Route path="/explorecampaign" element={<ExploreCampaign />} />
           <Route path="/mycampaigns" element={<Mycampaigns />} />
+          <Route path="/mycontribute" element={<Mycontributes />} />
           <Route path="/campaigns/edit/:campaignId" element={<Editcampaign />} />
 
         </Routes>

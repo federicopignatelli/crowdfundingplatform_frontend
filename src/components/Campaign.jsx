@@ -1,20 +1,75 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getCampaignData } from '../redux/actions/campaign';
+import { getContributionData } from "../redux/actions/contribution";
 
-import { Input, User, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Chip, Button, Progress } from "@nextui-org/react";
-
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Input, User, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Chip, Button, Progress } from "@nextui-org/react";
 import coverplaceholder from '../icons/logoxl.png'
 
-
-
-
 const Campaign = () => {
+    const dispatch = useDispatch();
 
     const { campaignId } = useParams();
     const singleCampaignData = useSelector(state => state.campaign.allcampaigns.find(campaign => campaign.campaignId === campaignId));
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+    //CONTRIBUTION
+    const [formData, setFormData] = useState({
+        amount: '',
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const token = localStorage.getItem('token');
+
+    const handleSubmitContribution = async () => {
+
+        try {
+            const response = await fetch(`http://localhost:4003/contribution/create/${campaignId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                alert("Contribute uploaded successfully!");
+
+                dispatch(getCampaignData());
+
+            } else {
+                const data = await response.json();
+                alert("Error: " + data.message);
+            }
+
+        } catch (error) {
+            console.error('Error saving contribute:', error.message);
+
+        }
+    };
+
+    //CONTRIBUTION LIST
+
+    const allContributions = useSelector(state => state.contribution.allcontributions);
+
+    const contributioListByCampaignId = useMemo(() => {
+        return allContributions.filter(contribution => contribution.campaign.campaignId === campaignId);
+    }, [allContributions, campaignId]);
+
+    console.log("contribution list" + contributioListByCampaignId)
+
+    useEffect(() => {
+        dispatch(getContributionData());
+    }, [dispatch]);
+
+
 
     return (
         <>
@@ -43,30 +98,49 @@ const Campaign = () => {
                 />
 
             </div>
-            <div className="container mx-auto justify-items-center px-4 mt-3 max-w-5xl flex flex-col sm:flex-row gap-x-8">
+            <div className="container mx-auto max-w-sm px-4 mt-3 sm:max-w-5xl flex flex-col justify-center justify-items-center sm:flex-row gap-x-8">
+
                 <div className="basis-3/5 ">
                     <Chip size="sm" color="warning" variant="flat" className="tracking-widest my-2">{singleCampaignData.category}</Chip>
                     <p className="font-mono text-5xl font-bold mb-2">{singleCampaignData.title}</p>
                     <p className="font-sans text-lg font-normal italic leading-5 mb-2 max-w-md">
                         {singleCampaignData.subtitle}
                     </p>
-                    <p className="text-sm mb-5 text-right sm:text-left text-gray-500"> Created on {singleCampaignData.startDate}</p>
-
-                    <Progress
-                        label="Funds received"
-                        size="sm"
-                        value={singleCampaignData.totalFunds}
-                        maxValue={singleCampaignData.fundsTarget}
-                        color="warning"
-                        formatOptions={{ style: "currency", currency: "USD" }}
-                        showValueLabel={true}
-                        classNames={{
-                            label: "font-medium sm:text-base",
-                            value: "font-medium sm:text-base",
-                            base: "max-w-md",
-                        }}
-                    />
+                    <div className=" max-w-md">
+                        <p className="text-sm mb-5 text-right sm:text-left text-gray-500"> Created on {singleCampaignData.startDate}</p>
+                    </div>
+                    <div className="">
+                        <Progress
+                            label="Funds received"
+                            size="sm"
+                            value={singleCampaignData.totalFunds}
+                            maxValue={singleCampaignData.fundsTarget}
+                            color="warning"
+                            formatOptions={{ style: "currency", currency: "USD" }}
+                            showValueLabel={true}
+                            classNames={{
+                                label: "font-medium sm:text-base",
+                                value: "font-medium sm:text-base",
+                                base: "max-w-md",
+                            }}
+                        />
+                    </div>
                     <p className="text-xs mt-2 sm:text-base">Funds necessary to carry out the project: ${singleCampaignData.fundsTarget}</p>
+                    <Table aria-label="contribution list" className="max-w-md mt-6">
+                        <TableHeader>
+                            <TableColumn>NAME</TableColumn>
+                            <TableColumn>AMOUNT</TableColumn>
+                        </TableHeader>
+                        <TableBody>
+                            {contributioListByCampaignId.map(contribution => (
+                                <TableRow key={contribution.contributionId}>
+                                    <TableCell>{contribution.userId.name}</TableCell>
+                                    <TableCell>{contribution.amount} $</TableCell>
+                                </TableRow>
+                            ))}
+
+                        </TableBody>
+                    </Table>
                 </div>
 
                 <div className="mt-5 sm:mt-10 basis-2/5 ">
@@ -85,25 +159,33 @@ const Campaign = () => {
                         <Button radius="full" size="lg" className="bg-gradient-to-tr from-amber-400 to-orange-500 text-white my-3"
                             onPress={onOpen}
                         >
-                            <p className="font-mono text-base tracking-widest">Support this project</p>
+                            <p className="font-sans text-base tracking-widest">Support this project </p>
                         </Button>
                     </div>
                 </div>
-
             </div>
+
 
             <Modal isOpen={isOpen}
                 onOpenChange={onOpenChange}
                 backdrop="blur"
+                placement="center"
+                className="absolute top-20"
             >
                 <ModalContent>
                     {(onClose) => (
                         <>
                             <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
                             <ModalBody>
+                                <p>
+                                    If you want to contribute to this project send the desired amount of money, thank you!.
+                                </p>
                                 <Input
+                                    onChange={handleInputChange}
+                                    value={formData.amount}
+                                    name="amount"
                                     type="number"
-                                    label="Price"
+                                    label="Amount"
                                     placeholder="0.00"
                                     variant="bordered"
                                     startContent={
@@ -117,7 +199,7 @@ const Campaign = () => {
                                 <Button color="deafult" variant="light" onPress={onClose}>
                                     Close
                                 </Button>
-                                <Button color="warning" onPress={onClose}>
+                                <Button color="warning" onPress={onClose} onClick={handleSubmitContribution}>
                                     Send
                                 </Button>
                             </ModalFooter>
@@ -131,6 +213,10 @@ const Campaign = () => {
 
         </>
     )
+
 };
+
+
+
 
 export default Campaign

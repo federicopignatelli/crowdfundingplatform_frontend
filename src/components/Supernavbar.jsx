@@ -28,6 +28,10 @@ const Supernavbar = () => {
         navigate('/registration')
     }
 
+    const goToMyContribute = () => {
+        navigate('/mycontribute')
+    }
+
     const goToLogin = () => {
         navigate('/login')
     }
@@ -107,7 +111,7 @@ const Supernavbar = () => {
                             </DropdownItem>
                             <DropdownItem key="profilepages" onClick={goToProfile} textValue="Profile">Profile</DropdownItem>
                             <DropdownItem key="mycampaigns" onClick={goToMyCampaigns} textValue="My campaigns">My campaigns</DropdownItem>
-                            <DropdownItem key="mycontributes" textValue="My contributes">My contributes</DropdownItem>
+                            <DropdownItem key="mycontributes" textValue="My contributes" onClick={goToMyContribute}>My contributes</DropdownItem>
                             <DropdownItem key="logout" color="warning" textValue="Log Out" onClick={handleLogOut}>
                                 Log Out
                             </DropdownItem>
