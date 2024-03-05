@@ -129,21 +129,23 @@ const Supernavbar = () => {
                 </NavbarContent>
             )}
 
-            <NavbarMenu onClick={handleCloseMenu}>
+            <NavbarMenu textValue="drop list menu" onClick={handleCloseMenu}>
                 <NavbarMenuItem textValue="Explore campaigns">
-                    <Link color="foreground" href="#" className="w-full" onClick={() => {
-                        goToExploreCampaign();
-                        handleCloseMenu();
-                    }}>
+                    <Link color="foreground" href="#" className="w-full" textValue="explore campaign link"
+                        onClick={() => {
+                            goToExploreCampaign();
+                            handleCloseMenu();
+                        }}>
                         Explore campaigns
                     </Link>
                 </NavbarMenuItem>
                 {isLoggedIn ? (
                     <NavbarMenuItem textValue="Create campaign">
-                        <Link href="#" aria-current="page" color="warning" className="font-normal" onClick={() => {
-                            goToCreateCampaign();
-                            handleCloseMenu();
-                        }}>
+                        <Link href="#" aria-current="page" color="warning" className="font-normal" textValue="link create campaign"
+                            onClick={() => {
+                                goToCreateCampaign();
+                                handleCloseMenu();
+                            }}>
                             Create campaign
                         </Link>
                     </NavbarMenuItem>

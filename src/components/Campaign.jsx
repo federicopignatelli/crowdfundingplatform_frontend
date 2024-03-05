@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Progress } from "@nextui-org/react";
-import { Chip } from "@nextui-org/react";
-import { User } from "@nextui-org/react";
+
+import { Input, User, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Chip, Button, Progress } from "@nextui-org/react";
+
 import coverplaceholder from '../icons/logoxl.png'
 
 
@@ -14,6 +14,7 @@ const Campaign = () => {
 
     const { campaignId } = useParams();
     const singleCampaignData = useSelector(state => state.campaign.allcampaigns.find(campaign => campaign.campaignId === campaignId));
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
         <>
@@ -80,9 +81,51 @@ const Campaign = () => {
                             src: singleCampaignData.userId.profilepic
                         }}
                     />
+                    <div>
+                        <Button radius="full" size="lg" className="bg-gradient-to-tr from-amber-400 to-orange-500 text-white my-3"
+                            onPress={onOpen}
+                        >
+                            <p className="font-mono text-base tracking-widest">Support this project</p>
+                        </Button>
+                    </div>
                 </div>
 
             </div>
+
+            <Modal isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                backdrop="blur"
+            >
+                <ModalContent>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                            <ModalBody>
+                                <Input
+                                    type="number"
+                                    label="Price"
+                                    placeholder="0.00"
+                                    variant="bordered"
+                                    startContent={
+                                        <div className="pointer-events-none flex items-center">
+                                            <span className="text-default-400 text-small">$</span>
+                                        </div>
+                                    }
+                                />
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="deafult" variant="light" onPress={onClose}>
+                                    Close
+                                </Button>
+                                <Button color="warning" onPress={onClose}>
+                                    Send
+                                </Button>
+                            </ModalFooter>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
+
             <div className="my-10"><p className="text-white">a</p></div>
 
 

@@ -182,7 +182,7 @@ const Mycampaigns = () => {
                 ))}
             </div>
 
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center" backdrop="opaque">
                 <ModalContent>
                     {(onClose) => (
                         <>

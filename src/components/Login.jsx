@@ -22,7 +22,7 @@ const Login = () => {
 
 
     useEffect(() => {
-        if (error === 'user not found') {
+        if (error === 'user not found' || error === 'Login failed') {
             onOpen()
         }
     }, [error, onOpen])
@@ -93,7 +93,7 @@ const Login = () => {
                 </div>
 
 
-                <Modal isOpen={isOpen} onClose={onClose}>
+                <Modal isOpen={isOpen} onClose={onClose} placement="center" className="m-5" backdrop="blur">
                     <ModalContent>
                         <>
                             <ModalHeader className="flex flex-col gap-1">Error Message</ModalHeader>
@@ -103,7 +103,7 @@ const Login = () => {
                                 </p>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="warning" onPress={onClose} className="">
+                                <Button color="warning" onPress={onClose}>
                                     Close
                                 </Button>
                             </ModalFooter>
