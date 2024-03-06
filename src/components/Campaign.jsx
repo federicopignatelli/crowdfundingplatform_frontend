@@ -14,6 +14,8 @@ const Campaign = () => {
     const { campaignId } = useParams();
     const singleCampaignData = useSelector(state => state.campaign.allcampaigns.find(campaign => campaign.campaignId === campaignId));
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+
 
     //CONTRIBUTION
     const [formData, setFormData] = useState({
@@ -40,7 +42,6 @@ const Campaign = () => {
             });
 
             if (response.ok) {
-                alert("Contribute uploaded successfully!");
 
                 dispatch(getCampaignData());
 
@@ -66,8 +67,12 @@ const Campaign = () => {
     console.log("contribution list" + contributioListByCampaignId)
 
     useEffect(() => {
+
         dispatch(getContributionData());
+        dispatch(getCampaignData());
+
     }, [dispatch]);
+
 
 
 
@@ -91,11 +96,7 @@ const Campaign = () => {
                 }
 
 
-                <img
-                    className="w-full h-full object-cover object-center"
-                    src={singleCampaignData.campaignCover}
-                    alt="Immagine di copertina"
-                />
+
 
             </div>
             <div className="container mx-auto max-w-sm px-4 mt-3 sm:max-w-5xl flex flex-col justify-center justify-items-center sm:flex-row gap-x-8">
@@ -155,13 +156,15 @@ const Campaign = () => {
                             src: singleCampaignData.userId.profilepic
                         }}
                     />
-                    <div>
-                        <Button radius="full" size="lg" className="bg-gradient-to-tr from-amber-400 to-orange-500 text-white my-3"
-                            onPress={onOpen}
-                        >
-                            <p className="font-sans text-base tracking-widest">Support this project </p>
-                        </Button>
-                    </div>
+                    {isLoggedIn ? (
+                        <div>
+                            <Button radius="full" size="lg" className="bg-gradient-to-tr from-amber-400 to-orange-500 text-white my-3"
+                                onPress={onOpen}
+                            >
+                                <p className="font-sans text-base tracking-widest">Support this project </p>
+                            </Button>
+                        </div>
+                    ) : (null)}
                 </div>
             </div>
 
