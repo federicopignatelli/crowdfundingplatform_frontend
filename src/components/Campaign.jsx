@@ -42,6 +42,7 @@ const Campaign = () => {
             });
 
             if (response.ok) {
+                dispatch(getContributionData());
 
                 dispatch(getCampaignData());
 
@@ -60,9 +61,15 @@ const Campaign = () => {
 
     const allContributions = useSelector(state => state.contribution.allcontributions);
 
+    // const contributioListByCampaignId = useMemo(() => {
+    //     return allContributions.filter(contribution => contribution.campaign.campaignId === campaignId);
+    // }, [allContributions, campaignId]);
+
     const contributioListByCampaignId = useMemo(() => {
-        return allContributions.filter(contribution => contribution.campaign.campaignId === campaignId);
+        const filteredContributions = allContributions.filter(contribution => contribution.campaign.campaignId === campaignId);
+        return filteredContributions.slice(0, 5);
     }, [allContributions, campaignId]);
+
 
     console.log("contribution list" + contributioListByCampaignId)
 
@@ -102,13 +109,13 @@ const Campaign = () => {
             <div className="container mx-auto max-w-sm px-4 mt-3 sm:max-w-5xl flex flex-col justify-center justify-items-center sm:flex-row gap-x-8">
 
                 <div className="basis-3/5 ">
-                    <Chip size="sm" color="warning" variant="flat" className="tracking-widest my-2">{singleCampaignData.category}</Chip>
+                    <Chip size="lg" color="warning" variant="flat" className="tracking-widest my-5">{singleCampaignData.category}</Chip>
                     <p className="font-mono text-5xl font-bold mb-2">{singleCampaignData.title}</p>
-                    <p className="font-sans text-lg font-normal italic leading-5 mb-2 max-w-md">
+                    <p className="font-sans text-xl font-normal italic leading-5 mb-2 max-w-md">
                         {singleCampaignData.subtitle}
                     </p>
                     <div className=" max-w-md">
-                        <p className="text-sm mb-5 text-right sm:text-left text-gray-500"> Created on {singleCampaignData.startDate}</p>
+                        <p className="text-sm mb-7 text-right sm:text-left text-gray-500"> Created on {singleCampaignData.startDate}</p>
                     </div>
                     <div className="">
                         <Progress
@@ -126,7 +133,7 @@ const Campaign = () => {
                             }}
                         />
                     </div>
-                    <p className="text-xs mt-2 sm:text-base">Funds necessary to carry out the project: ${singleCampaignData.fundsTarget}</p>
+                    <p className="text-xs mt-1 sm:text-base">Funds necessary to carry out the project: ${singleCampaignData.fundsTarget}</p>
                     <Table aria-label="contribution list" className="max-w-md mt-6">
                         <TableHeader>
                             <TableColumn>NAME</TableColumn>
