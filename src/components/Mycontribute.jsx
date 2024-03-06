@@ -3,7 +3,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getContributionData } from "../redux/actions/contribution";
 
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
+import { Divider, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
 
 
 
@@ -30,12 +30,12 @@ const Mycontributes = () => {
         <>
 
 
-            <div className="container mx-auto px-4 mt-5 max-w-xl">
-                <p className="font-mono font-bold text-4xl">My contributes</p>
+            <div className="container mx-auto px-4 my-7 max-w-2xl">
+                <p className="font-mono font-bold text-3xl sm:text-6xl text-center">My contributes</p>
             </div>
-
-            <div className="container mx-auto px-4 mt-5 max-w-xl">
-                <Table aria-label="Example static collection table">
+            <Divider className="mt-5" />
+            <div className="container mx-auto px-4 mt-7 max-w-3xl">
+                <Table aria-label="Econtributions list">
                     <TableHeader>
                         <TableColumn className="font-bold tracking-wider">DATE & TIME</TableColumn>
                         <TableColumn className="font-bold tracking-wider">AMOUNT</TableColumn>
@@ -43,7 +43,8 @@ const Mycontributes = () => {
                     </TableHeader>
                     <TableBody>
                         {contributioListByUserId.map(contribution => (
-                            <TableRow key="contribution.contributionId">
+                            <TableRow key="contribution.contributionId" className="">
+
                                 <TableCell>
                                     <span><p><span className="font-bold">date: </span>{contribution.emissionDate}</p></span>
                                     <span><p><span className="font-bold">time: </span>{contribution.emissionTime ?
@@ -58,6 +59,7 @@ const Mycontributes = () => {
                                     <p><span className="font-bold">Title: </span>{contribution.campaign.title}</p>
                                     <p><span className="font-bold">Subtitle: </span>{contribution.campaign.subtitle}</p>
                                 </TableCell>
+
                             </TableRow>
                         ))}
                     </TableBody>

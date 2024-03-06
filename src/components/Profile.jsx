@@ -6,6 +6,7 @@ import { Divider } from "@nextui-org/react";
 import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 
+
 const Profile = () => {
 
     const dispatch = useDispatch();
@@ -55,6 +56,10 @@ const Profile = () => {
 
     return (
         <>
+            <div className="container mx-auto px-4 my-7 max-w-2xl">
+                <p className="font-mono font-bold text-3xl sm:text-6xl text-center">Profile</p>
+            </div>
+            <Divider className="mt-4" />
             <div className="bg-orange-300 p-8">
                 <div className="container mx-auto px-5 max-w-5xl flex flex-col sm:flex-row">
                     {

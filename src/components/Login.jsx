@@ -10,6 +10,8 @@ import { EyeSlashFilledIcon } from "../icons/EyeSlashFilledIcon";
 import { EyeFilledIcon } from "../icons/EyeFilledIcon";
 
 
+
+
 const Login = () => {
 
     const dispatch = useDispatch();
@@ -20,7 +22,6 @@ const Login = () => {
     const error = useSelector((state) => state.user.error);
 
 
-
     useEffect(() => {
         if (error === 'user not found' || error === 'Login failed') {
             onOpen()
@@ -29,7 +30,9 @@ const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(login(email, password))
+        dispatch(login(email, password)).then(() => {
+            navigate("/profile");
+        })
     }
 
     const navigate = useNavigate();

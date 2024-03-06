@@ -103,7 +103,12 @@ const Mycampaigns = () => {
 
     return (
         <>
-            <div className='mt-5 grid grid-cols-1 gap-5 lg:gap-8 justify-items-center mx-auto px-5 max-w-6xl sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+
+            <div className="container mx-auto px-4 my-7 max-w-2xl">
+                <p className="font-mono font-bold text-3xl sm:text-5xl text-center">Your<span> active project</span></p>
+            </div>
+            <Divider className="my-4" />
+            <div className='mt-9 grid grid-cols-1 gap-5 lg:gap-8 justify-items-center mx-auto px-5 max-w-6xl sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {myCampaigns && myCampaigns.map(campaign => (
                     <div key={campaign.campaignId} className='w-full max-w-96 border border-gray-200 rounded-md overflow-hidden'>
 
