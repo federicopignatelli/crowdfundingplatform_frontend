@@ -20,7 +20,8 @@ const Login = () => {
     const [isVisible, setIsVisible] = React.useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const error = useSelector((state) => state.user.error);
-
+    const navigate = useNavigate()
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
 
     useEffect(() => {
         if (error === 'user not found' || error === 'Login failed') {
@@ -28,18 +29,24 @@ const Login = () => {
         }
     }, [error, onOpen])
 
+
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(login(email, password)).then(() => {
-            navigate("/profile");
-        })
+        dispatch(login(email, password));
     }
 
-    const navigate = useNavigate();
+
     const goToHome = () => {
-        navigate('/home')
+        navigate('/')
     }
 
+    const goToProfile = () => {
+        navigate('/profile')
+    }
+
+    if (isLoggedIn) {
+        goToProfile()
+    }
 
 
     const toggleVisibility = () => setIsVisible(!isVisible)

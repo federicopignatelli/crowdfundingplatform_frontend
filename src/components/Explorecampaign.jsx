@@ -16,6 +16,15 @@ const ExploreCampaign = () => {
         dispatch(getCampaignData());
     }, [dispatch]);
 
+    const reversedCampaigns = [...allcampaigns].reverse();
+
+    const truncateText = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + '..';
+        }
+        return text;
+    };
+
     return (
         <>
             <div className="container mx-auto px-4 my-7 max-w-2xl">
@@ -23,7 +32,7 @@ const ExploreCampaign = () => {
             </div>
             <Divider className="mt-4" />
             <div className='mt-7 grid grid-cols-1 gap-5 lg:gap-8 justify-items-center mx-auto px-5 max-w-6xl sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-                {allcampaigns.map(campaign => (
+                {reversedCampaigns.map(campaign => (
                     <Link to={`/campaign/${campaign.campaignId}`} key={campaign.campaignId}>
                         <div className='w-full max-w-96 sm:w-60 h-96 flex flex-col justify-between border border-gray-200 rounded-md overflow-hidden transition-all duration-500 hover:ease-out hover:shadow-xl hover:shadow-gray-200 hover:-translate-y-0.5'>
 
@@ -43,8 +52,8 @@ const ExploreCampaign = () => {
                             <div className='flex flex-col justify-between h-44 p-5'>
                                 <div className='flex flex-col justify-start'>
                                     <Chip size="sm" color="warning" variant="flat" className="tracking-widest my-1">{campaign.category}</Chip>
-                                    <p className="font-mono text-2xl font-bold mb-1 tracking-tight leading-ticht">{campaign.title}</p>
-                                    <p className='leading-5 text-sm'>{campaign.subtitle}</p>
+                                    <p className="font-mono text-xl font-bold mb-1 tracking-tight leading-ticht">{truncateText(campaign.title, 30)}</p>
+                                    <p className='leading-5 text-sm'>{truncateText(campaign.subtitle, 25)}</p>
                                 </div>
                                 <Progress
                                     aria-label="Progresso della campagna"

@@ -61,9 +61,6 @@ const Campaign = () => {
 
     const allContributions = useSelector(state => state.contribution.allcontributions);
 
-    // const contributioListByCampaignId = useMemo(() => {
-    //     return allContributions.filter(contribution => contribution.campaign.campaignId === campaignId);
-    // }, [allContributions, campaignId]);
 
     const contributioListByCampaignId = useMemo(() => {
         const filteredContributions = allContributions.filter(contribution => contribution.campaign.campaignId === campaignId);
@@ -111,7 +108,7 @@ const Campaign = () => {
                 <div className="basis-3/5 ">
                     <Chip size="lg" color="warning" variant="flat" className="tracking-widest my-5">{singleCampaignData.category}</Chip>
                     <p className="font-mono text-5xl font-bold mb-2">{singleCampaignData.title}</p>
-                    <p className="font-sans text-xl font-normal italic leading-5 mb-2 max-w-md">
+                    <p className="font-sans text-xl font-normal italic leading-7 mt-6 mb-2 max-w-md">
                         {singleCampaignData.subtitle}
                     </p>
                     <div className=" max-w-md">

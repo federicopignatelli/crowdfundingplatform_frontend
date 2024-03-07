@@ -34,6 +34,8 @@ const Home = () => {
         fetchSlides();
     }, []);
 
+    const reversedSlides = [...Slides].reverse();
+
     const settings = {
         dots: true,
         infinite: true,
@@ -61,20 +63,20 @@ const Home = () => {
 
             <div className="w-full overflow-hidden">
                 <Slider {...settings}>
-                    {Slides.map((slide) => (
+                    {reversedSlides.map((slide) => (
                         <div key={slide.campaignId} className='w-full'>
                             <Card className="w-full h-[70vh] relative" radius='none'>
-                                <CardHeader className="absolute z-10 bottom-20 left-20 sm:left-72 flex-col !items-start w-[450px]">
+                                <CardHeader className="absolute z-10 bottom-20 left-20 sm:left-72 flex-col !items-start w-[300px] sm:w-[600px]">
                                     <div className=''>
-                                        <p className=" text-white opacity-75 text-2xl uppercase font-bold sm:text-5xl">Title campaign</p>
-                                        <h4 className="text-white font-medium text-xl sm:text-2xl">Contribute to the planet</h4>
+                                        <p className=" text-white opacity-75 text-2xl uppercase font-bold sm:text-5xl">{slide.title}</p>
+                                        <h4 className="text-white font-medium text-xl sm:text-2xl mt-10">{slide.subtitle}</h4>
                                     </div>
                                 </CardHeader>
                                 <Image
                                     removeWrapper
                                     alt="Card background"
                                     className="z-0 w-full h-full object-cover opacity-80"
-                                    src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+                                    src={slide.campaignCover}
                                     radius='none'
                                 />
                             </Card>
