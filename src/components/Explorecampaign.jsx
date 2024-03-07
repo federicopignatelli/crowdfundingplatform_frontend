@@ -52,7 +52,7 @@ const ExploreCampaign = () => {
                             <div className='flex flex-col justify-between h-44 p-5'>
                                 <div className='flex flex-col justify-start'>
                                     <Chip size="sm" color="warning" variant="flat" className="tracking-widest my-1">{campaign.category}</Chip>
-                                    <p className="font-mono text-xl font-bold mb-1 tracking-tight leading-ticht">{truncateText(campaign.title, 30)}</p>
+                                    <p className="font-mono text-xl font-bold mb-1 tracking-tight leading-ticht">{truncateText(campaign.title, 28)}</p>
                                     <p className='leading-5 text-sm'>{truncateText(campaign.subtitle, 25)}</p>
                                 </div>
                                 <Progress

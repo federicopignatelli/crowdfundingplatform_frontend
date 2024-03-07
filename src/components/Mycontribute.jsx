@@ -34,7 +34,7 @@ const Mycontributes = () => {
                 <p className="font-mono font-bold text-3xl sm:text-6xl text-center">My contributes</p>
             </div>
             <Divider className="mt-5" />
-            <div className="container mx-auto px-4 mt-7 max-w-3xl">
+            <div className="container mx-auto px-4 mt-7 w-6xl">
                 <Table aria-label="Econtributions list">
                     <TableHeader>
                         <TableColumn className="font-bold tracking-wider">DATE & TIME</TableColumn>

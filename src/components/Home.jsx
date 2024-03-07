@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -11,6 +11,7 @@ import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-o
 const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [Slides, setSlides] = useState([]);
+    const navigate = useNavigate()
     console.log(currentSlide)
 
     useEffect(() => {
@@ -36,6 +37,10 @@ const Home = () => {
 
     const reversedSlides = [...Slides].reverse();
 
+    const goToExploreCampaign = () => {
+        navigate('/explorecampaign')
+    }
+
     const settings = {
         dots: true,
         infinite: true,
@@ -55,7 +60,8 @@ const Home = () => {
                 <p className='font-sans text-base sm:text-lg text-center'>TechFunds is where early adopters and innovation seekers find lively, imaginative tech before it hits the mainstream.
                 </p>
                 <div className='flex flex-row justify-center'>
-                    <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg my-3 w-60 text-base uppercase tracking-wider font-bold">
+                    <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg my-3 w-60 text-base uppercase tracking-wider font-bold"
+                        onClick={goToExploreCampaign}>
                         Explore
                     </Button>
                 </div>
@@ -151,7 +157,6 @@ const Home = () => {
 
             </div>
 
-            <div className="my-10"><p className="text-white">a</p></div>
 
 
         </>

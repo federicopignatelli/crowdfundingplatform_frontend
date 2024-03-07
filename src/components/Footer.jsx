@@ -7,7 +7,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-white text-gray-400 py-2 w-full border-t border-gray-300 mt-20">
+        <footer className="bg-white text-gray-400 py-2 w-full border-t border-gray-300 mt-20 sticky bottom-0">
             <div className="container mx-auto px-5 flex flex-row justify-between sm:justify-between">
                 <div className="">
                     <span className=" mr-1 text-xs md:text-sm">&copy;</span>
@@ -30,7 +30,7 @@ const Footer = () => {
                                     </svg>
                                 }
                             >
-                                Custom Icon
+                                <p className='font-bold'>Github</p>
                             </Link>
                         </li>
                         <li className="mx-4">
@@ -45,7 +45,7 @@ const Footer = () => {
                                     </svg>
                                 }
                             >
-                                Custom Icon
+                                <p className='font-bold'>Linkedin</p>
                             </Link>
                         </li>
                         <li className="mx-4">Stats</li>
