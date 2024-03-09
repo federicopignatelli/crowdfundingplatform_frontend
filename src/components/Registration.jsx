@@ -144,6 +144,7 @@ const Registration = () => {
                 </div>
 
             </div>
+            <div className="mt-20"><p className="text-white">a</p></div>
 
         </>
     )

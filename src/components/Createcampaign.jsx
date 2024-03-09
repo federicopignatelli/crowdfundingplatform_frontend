@@ -42,7 +42,6 @@ const CreateCampaign = () => {
             });
 
             if (response.ok) {
-                alert("Campaign uploaded successfully!");
 
             } else {
                 const data = await response.json();

@@ -80,7 +80,7 @@ const Supernavbar = () => {
                 </NavbarBrand>
                 <NavbarItem>
                     <Link color="foreground" href="#" onClick={goToExploreCampaign}>
-                        Explore campaigns
+                        Explore projects
                     </Link>
                 </NavbarItem>
                 {isLoggedIn ? (<NavbarItem>
@@ -140,7 +140,7 @@ const Supernavbar = () => {
                             goToExploreCampaign();
                             handleCloseMenu();
                         }}>
-                        Explore campaigns
+                        Explore projects
                     </Link>
                 </NavbarMenuItem>
                 {isLoggedIn ? (
