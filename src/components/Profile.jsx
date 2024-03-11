@@ -145,9 +145,7 @@ const Profile = () => {
                 </ModalContent>
             </Modal>
 
-            <div className="my-32"><p className="text-white">a</p></div>
-
-
+            <div className="mt-32"><p className="text-white">a</p></div>
         </>
     )
 }

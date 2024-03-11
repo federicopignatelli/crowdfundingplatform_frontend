@@ -122,8 +122,7 @@ const Login = () => {
                 </Modal>
 
             </div>
-            <div className="my-80"><p className="text-white">a</p></div>
-
+            <div className="my-60"><p className="text-white">a</p></div>
         </>
     )
 }

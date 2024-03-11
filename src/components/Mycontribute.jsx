@@ -65,8 +65,7 @@ const Mycontributes = () => {
                     </TableBody>
                 </Table>
             </div>
-            <div className="my-64"><p className="text-white">a</p></div>
-
+            <div className="my-60"><p className="text-white">a</p></div>
         </>
     )
 }
