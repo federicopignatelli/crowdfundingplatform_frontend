@@ -144,7 +144,6 @@ const Registration = () => {
                 </div>
 
             </div>
-            <div className="my-20"><p className="text-white">a</p></div>
         </>
     )
 }

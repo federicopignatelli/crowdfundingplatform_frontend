@@ -215,9 +215,6 @@ const Campaign = () => {
                 </ModalContent>
             </Modal>
 
-            <div className="my-10"><p className="text-white">a</p></div>
-
-
         </>
     )
 

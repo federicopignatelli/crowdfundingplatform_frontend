@@ -75,7 +75,6 @@ const ExploreCampaign = () => {
                 ))}
             </div>
 
-            <div className="my-10"><p className="text-white">a</p></div>
         </>
     )
 }
